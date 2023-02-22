@@ -1,0 +1,54 @@
+<?php
+ini_set('display_errors', 'on');
+require_once 'includes/core/globals.php';
+?>
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <?php
+    require 'includes/partials/page_head.phtml';
+    ?>
+</head>
+
+<body>
+    <main>
+        <form action="" method="post">
+            <h3>REJOINS LA COMMU !</h3>
+            <div class="name">
+                <label for="name">Nom</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="firstname">
+                <label for="firstname">Prénom</label>
+                <input type="text" name="firstname" id="firstname" required>
+            </div>
+            <div class="pseudo">
+                <label for="pseudo">Pseudo</label>
+                <input type="text" name="pseudo" id="pseudo" required>
+            </div>
+            <div class="birthday">
+                <label for="birthday">Date de naissance</label>
+                <input type="date" name="birthday" id="birthday" min="1923-01-01"  max="" required>
+            </div>
+            <div class="email">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="password">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="passwordConfirm">
+                <label for="passwordConfirm">Confirmer le mot de passe</label>
+                <input type="password" name="passwordConfirm" id="passwordConfirm" required>
+            </div>
+            <input type="submit" value="S'INSCRIRE !">
+        </form>
+    </main>
+
+        <?php
+        require 'includes/partials/footer.phtml';
+        ?>
+
+</body>

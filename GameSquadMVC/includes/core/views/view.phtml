@@ -1,0 +1,99 @@
+<?php
+    ini_set('display_errors', 'on');
+    ?>
+<!doctype html>
+<html lang="fr">
+<head>
+    <?php
+    require 'includes/partials/page_head.phtml';
+    ?>
+
+</head>
+<body>
+<main>
+    <section class="containerHome">
+        <div class="imgHome">
+            <img src="./public/medias/img/homePagessh.png" alt="logo GameSquad">
+        </div>
+
+        <?php
+        if (isset($_GET['message'])) {
+        echo '<div id="myModal" class="modal ">
+            <div class="modal-content">
+                <p>' . $_GET['message'] . '</p>
+                <span class="close">&times;</span>
+            </div>
+        </div>';
+        }
+        ?>
+
+        <div class="btnHome">
+            <ul>
+                <li><a href="index.php?page=user&action=login">SE CONNECTER</a></li>
+                <li><a href="index.php?page=user&action=add">S'INSCRIRE</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="present">
+        <div class="titleExplain">
+            <h1>C'est super simple !</h1>
+            <h2>Rejoins tes ami(e)s en 3 étapes</h2>
+        </div>
+        <div class="step">
+            <div class="explainnb">
+                <div class="nbrs">1</div>
+                <p class="textExplain">
+                    Crée ton compte à l'aide du bouton s'inscrire
+                </p>
+
+            </div>
+            <div class="explainnb">
+                <div class="nbrs">2</div>
+                <p class="textExplain">
+                    Propose ou Rejoins une session du jeu de ton choix
+                </p>
+            </div>
+            <div class="explainnb">
+                <div class="nbrs">3</div>
+                <p class="textExplain">
+                    Retrouve tes amis pour triompher
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="presentTwo">
+        <article class="whoAre">
+            <h2> POURQUOI NOUS REJOINDRE ? </h2>
+            <ul>
+                <li>Trouvez des coéquipiers fiables : Les joueurs pourront trouver des coéquipiers qui ont des objectifs similaires dans le jeu, ainsi que des styles de jeu complémentaires, et qui sont fiables et engagés..</li>
+                <li>Économisez du temps et de l'énergie : Au lieu de perdre du temps à chercher des coéquipiers dans les chats de jeu en ligne, les joueurs pourront trouver des partenaires de jeu qualifiés en quelques clics.</li>
+                <li>Améliorez vos compétences : En jouant avec des coéquipiers expérimentés et en partageant des astuces et des tactiques de jeu, les joueurs pourront améliorer leurs compétences et devenir des joueurs de niveau supérieur.</li>
+                <li> Les joueurs peuvent se connecter avec d'autres joueurs passionnés de jeux vidéo et créer des amitiés durables avec des personnes partageant les mêmes intérêts.</li></ul>
+        </article>
+        <div class="imgContent">
+            <img src="./public/medias/img/mario.png" alt="image mario et luigi">
+        </div>
+    </section>
+    <section class="console">
+        <h2>Et peu importe votre plateforme : </h2>
+        <div class="logo">
+            <ul>
+                <li><img src="./public/medias/img/logoPsn.png" alt="logo steam"></li>
+                <li><img src="./public/medias/img/logoXbox.png" alt="logo playstation plus"></li>
+                <li><img src="./public/medias/img/logoSteam.png" alt="logo nintendo"></li>
+                <li><img src="./public/medias/img/logoNintendo.png" alt="logo xbox"></li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+    <?php
+        require 'includes/partials/footer.phtml';
+    ?>
+
+
+
+</body>
+
+</html>

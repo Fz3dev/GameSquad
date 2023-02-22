@@ -1,0 +1,35 @@
+<?php
+ini_set('display_errors', 'on');
+require_once 'includes/core/globals.php';
+?>
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <?php
+    require 'includes/partials/page_head.phtml';
+    ?>
+</head>
+
+<body class="bodyCon">
+<main>
+    <form action="" method="post">
+        <h3>CONNECTE-TOI !</h3>
+
+        <div class="email">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div class="password">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <input type="submit" value="SE CONNECTER ">
+    </form>
+</main>
+
+<?php
+require 'includes/partials/footer.phtml';
+?>
+
+</body>

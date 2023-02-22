@@ -1,0 +1,375 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+
+}
+
+body{
+    height: 100VH;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom, #f7f7f7, #d3cee2, #b2a5cc, #947db5, #78559c, #814690, #893482, #901d70, #af2d66, #c6465b, #d46353, #dc8150);
+}
+main{
+
+    display: flex;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: 'sofiaSBI';
+    src: url("../medias/font/Sofia_Sans_Extra_Condensed/static/SofiaSansExtraCondensed-SemiBoldItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'sofiaSB';
+    src: url("../medias/font/Sofia_Sans_Extra_Condensed/static/SofiaSansExtraCondensed-SemiBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: sofiaB;
+    src: url("../medias/font/Sofia_Sans_Extra_Condensed/static/SofiaSansExtraCondensed-Bold.ttf") format("truetype"););
+}
+@font-face {
+    font-family: sofiaR;
+    src: url("../medias/font/Sofia_Sans_Extra_Condensed/static/SofiaSansExtraCondensed-Regular.ttf") format("truetype"););
+}
+@font-face {
+    font-family: sofiaM;
+    src: url("../medias/font/Sofia_Sans_Extra_Condensed/static/SofiaSansExtraCondensed-Medium.ttf") format("truetype"););
+}
+
+/* ------ HOME PAGE -----*/
+
+.containerHome {
+    height: 100VH;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imgHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgHome img{
+    width: 70%;
+}
+.btnHome{
+    display: flex;
+}
+.btnHome ul{
+    display: flex;
+}
+.btnHome ul li {
+    padding: 1rem;
+    margin: 1.8rem;
+    border: none;
+    background-color: #c0a9d3;
+    border-radius: 20px;
+    box-shadow: 10px 15px 73px 9px rgba(86,28,121,0.8);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.5s;
+    font-family: 'sofiaSBI';
+    font-size:1.8rem;
+    list-style-type: none;
+    text-align: center;
+}
+.btnHome ul li:hover {
+    transform:scale(1.1);
+}
+.btnHome ul li a{
+    color: rgb(220, 129, 80);
+    transition: 0.5s;
+}
+.btnHome ul li a:hover {
+    transform: scale(1.1);
+    color: rgb(220, 129, 80);
+}
+.present {
+    font-family: 'sofiaSBI';
+    color: rgb(220, 129, 80);
+}
+.present h1 {
+    text-align: center;
+    font-size: 4rem;
+}
+.present h2{
+    text-align: center;
+}
+.step{
+    margin: 3rem 2rem;
+    display: flex;
+    justify-content: space-around;
+
+
+}
+.explainnb {
+    width: 250px    ;
+    height: 250px;
+    border: solid whitesmoke 0.5rem;
+    border-radius: 25%;
+    padding: 0.3rem;
+}
+.nbrs {
+    text-align: center;
+    font-size: 6.5rem;
+}
+.textExplain {
+    text-align: center;
+    font-size: 1.8rem;
+}
+.presentTwo {
+    padding:5rem 2rem 5rem 3rem;
+    display: flex;
+}
+.whoAre {
+    color: #f7f7f7;
+    padding: 1.8rem;
+}
+.whoAre h2 {
+    font-family: sofiaB;
+    font-size: 4rem;
+}
+.whoAre ul {
+    list-style-type: circle;
+    font-family: sofiaR;
+    font-size:1.3rem ;
+    margin-top: 2rem;
+}
+.whoAre li {
+    margin-bottom: 1rem;
+}
+.console {
+    /*background-color: #dc8150FF;*/
+    font-family: sofiaB;
+    color: #f7f7f7;
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 2rem;
+
+}
+.logo ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem;
+}
+.logo ul li{
+    list-style-type: none;
+    box-sizing: content-box;
+    display: flex;
+
+    align-items: center;
+}
+.logo ul li img{
+    width: 100px;
+}
+
+/* MODAL de validation d'inscription */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100VH;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #DC8150FF;
+    color: #f7f7f7;
+    font-family: sofiaB;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    margin: 30% auto;
+    border: 1px solid #f7f7f7;
+    height: 25%;
+    width: 50%;
+    border-radius: 0.25rem;
+    position: relative;
+}
+
+.close {
+    color: #f7f7f7;
+    float: right;
+    font-size: 3rem;
+    font-weight: bold;
+    position: absolute;
+    top: -0.5rem;
+    right: 0.5rem;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/*  ------ FORMULAIRE INSCRIPTION ------ */
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.8rem;
+    margin: 2rem auto;
+    font-family: sofiaM;
+    color: #f7f7f7;
+    /* From https://css.glass */
+    background: rgba(75, 75, 75, 0.52);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(17.4px);
+    -webkit-backdrop-filter: blur(17.4px);
+    border: 1px solid rgba(75, 75, 75, 0.28);
+    width: 40%;
+}
+form h3 {
+    font-size: 2.5rem;
+    font-family: sofiaSBI;
+    color: #dc8150;
+    margin: 1rem;
+
+}
+form div{
+    width: 320px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.8rem;
+
+}
+/*mettre le fond de mon formulaire en blanc*/
+
+input {
+    border-radius: 5px;
+    border: none;
+    padding: 0.5rem;
+    font-family: sofiaM;
+    font-size: 1.2rem;
+    color: #f7f7f7;
+    background: rgba(75, 75, 75, 0.52);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(17.4px);
+    -webkit-backdrop-filter: blur(17.4px);
+    border: 1px solid rgba(75, 75, 75, 0.28);
+}
+input:focus {
+    outline-color: #dc8150;
+}
+#birthday {
+    width: 137px;
+}
+label {
+    font-size: 1.2rem;
+    font-family: sofiaM;
+    color: #f7f7f7;
+    display: flex;
+    align-items: center;
+}
+input[type="submit"] {
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    font-family: sofiaSBI;
+    color: #dc8150;
+    background: #f7f7f7;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(17.4px);
+    -webkit-backdrop-filter: blur(17.4px);
+    border: 1px solid rgba(75, 75, 75, 0.28);
+}
+input[type="submit"]:hover {
+    background-color: #dc8150;
+    color: #f7f7f7;
+    cursor: pointer;
+}
+.error {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 5%;
+    padding: 1rem;
+    background-color: red;
+    color: #f7f7f7;
+    font-size: 1.2rem;
+    font-family: sofiaB;
+    margin: 0.5rem;
+}
+/* ------ FORMULAIRE DE CONTACT ------ */
+    textarea {
+        background: rgba(75, 75, 75, 0.52);
+        border: none;
+        border-radius: 16px;
+
+    }
+    textarea:focus {
+    outline-color: #dc8150;
+}
+
+
+
+/* ------ FORMULAIRE CONNEXION ------ */
+.bodyCon {
+    height: 100vh;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px){
+
+    /* ------ HOME PAGE -----*/
+
+    .btnHome ul{
+        flex-direction: column;
+    }
+
+    .step   {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .explainnb{
+        margin: 1rem;
+    }
+    .imgContent {
+        display: none;
+    }
+    .logo {
+        display: flex;
+        justify-content: center;
+    }
+    .logo ul li img {
+        width: 80px;
+        margin: 1rem;
+    }
+    .logo ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+    /* ------ FORMULAIRE INSCRIPTION ------ */
+    form {
+        width: 75%;
+    }
+
+
+}
+
+

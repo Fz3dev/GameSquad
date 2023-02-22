@@ -1,0 +1,43 @@
+<?php
+ini_set('display_errors', 'on');
+require_once 'includes/core/globals.php';
+?>
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <?php
+    require 'includes/partials/page_head.phtml';
+    ?>
+</head>
+<body>
+    <main>
+
+        <form class="formContact" action="" method="POST">
+            <h3>CONTACT NOUS :</h3>
+            <div class="nom">
+                <label for="name">Nom</label>
+                <input type="text" name="name" id="name" placeholder="Nom" required>
+            </div>
+            <div class="prenom">
+                <label for="firstname">Prénom</label>
+                <input type="text" name="firstname" id="firstname" placeholder="Prénom" required>
+            </div>
+            <div class="mail">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+            </div>
+
+            <label for="message">Message</label>
+            <textarea name="message" id="message" cols="30" rows="10" placeholder=" Votre message" required></textarea>
+            <input type="submit" value="Envoyer">
+        </form>
+    </main>
+
+    <?php
+    include_once 'includes/partials/footer.phtml';
+    ?>
+
+</body>
+
+

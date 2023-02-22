@@ -1,0 +1,122 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+
+}
+nav ul {
+    list-style: none;
+}
+.logoNav img{
+    width : 200px
+}
+.menu ul {
+    display: flex;
+    font-family: sofiaSB;
+    font-size: 1.5rem;
+ }
+
+.menu ul a {
+    margin: 1rem;
+    padding: 0.8rem;
+    border: solid 1px #f7f7f7;
+
+}
+.menu a {
+    color: #f7f7f7;
+}
+.burger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.user {
+    color: #f7f7f7;
+    font-size: 3rem;
+    text-align: center;
+    }
+.pseudo {
+    font-family: sofiaM;
+    color: #f7f7f7;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.burgerMenu{
+    display: none;
+    font-family: sofiaSB;
+    position: absolute;
+    top: 100px;
+    left: -55px;
+    background-color: rgba(0, 0, 0, 0.30);
+    border-radius: 20px;
+    padding: 0.5rem;
+}
+.open {
+    display: block;
+}
+.burgerMenu li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 8rem;
+
+}
+.burgerMenu a {
+    color: #f7f7f7;
+    font-size: 1.5rem;
+
+}
+.burgerMenu a:hover {
+    color: #dc8150;
+    border-color: grey;
+}
+nav a:hover {
+    color: #dc8150;
+    border-color: grey;
+}
+.user:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+/* ----- MEDIA QUERIES ----- */
+
+@media screen and (max-width: 775px) {
+
+    nav{
+        flex-direction: column;
+    }
+    .burger {
+        position: absolute;
+        top: 30px;
+        right: 50px;
+
+    }
+}
+@media screen and (max-width: 500px) {
+    .logoNav img{
+    margin-right: 8rem;
+    }
+    .menu ul{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .menu ul li {
+        margin: 1.3rem;
+        min-width: 170px;
+    }
+    .burgerMenu{
+        background-color: rgba(0, 0, 0, 0.85);
+
+    }
+    .burger {
+        top: 20px;
+        right: 85px;
+    }
+}

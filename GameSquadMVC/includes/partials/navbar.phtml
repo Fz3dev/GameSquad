@@ -1,0 +1,26 @@
+<nav>
+    <div class="logoNav">
+        <a href="index.php?page=user"><img src="./public/medias/img/logoDW.png" alt="logo GAMESQUAD"></a>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="index.php?page=session&action=add">CREER UNE SQUAD</a></li>
+            <li><a href="index.php?page=session&action=search">TROUVER UNE SQUAD</a></li>
+        </ul>
+    </div>
+    <div class="burger">
+        <div class="user"><i class="fa-solid fa-circle-user"></i></div>
+        <div class="pseudo">
+            <?php
+            echo $_SESSION['user']->getPseudo();
+            ?>
+        </div>
+
+
+        <ul class="burgerMenu">
+            <li><a href="index.php?page=user&action=profil">Mon Profil</a></li>
+            <li><a href="index.php?page=">Mes Squads</a></li>
+            <li><a href="index.php?page=user&action=logout">Se Déconnecter</a></li>
+        </ul>
+    </div>
+</nav>
