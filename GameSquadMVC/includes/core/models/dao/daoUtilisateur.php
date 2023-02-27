@@ -62,34 +62,31 @@ use class\Utilisateur;
     }
 
     //Fonction qui permet de récupérer un utilisateur
-    function getUtilisateur($email): Utilisateur
-    {
-        $pdo = getConnexion();
-        $sql = "SELECT ID, NOM, PRENOM, AGE, PSEUDO, MAIL, ID_ROLE FROM Utilisateur WHERE mail = :email";
-        $query = $pdo->prepare($sql);
-        $query->bindValue(':email', $email, PDO::PARAM_STR);
-        $query->execute();
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-        $query->closeCursor();
-        $unUtilisateur = new Utilisateur($result['NOM'], $result['PRENOM'],$result['PSEUDO'], $result['AGE'], $result['MAIL'], $result['ID_ROLE']);
-        $unUtilisateur->setId($result['ID']);
-        return $unUtilisateur;
-    }
+function getUtilisateur($email): Utilisateur
+{
+    $pdo = getConnexion();
+    $sql = "SELECT ID, NOM, PRENOM, AGE, PSEUDO, MAIL, ID_ROLE FROM Utilisateur WHERE mail = :email";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':email', $email, PDO::PARAM_STR);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    $unUtilisateur = new Utilisateur($result['NOM'], $result['PRENOM'], $result['PSEUDO'], $result['AGE'], $result['MAIL'], $result['ID_ROLE']);
+    $unUtilisateur->setId($result['ID']);
+    return $unUtilisateur;
+}
 
     //Fonction qui permet de modifier un utilisateur
     function updateUtilisateur(Utilisateur $unUtilisateur): void
     {
         $pdo = getConnexion();
-        $sql = "UPDATE Utilisateur SET nom = :name, prenom = :firstname, pseudo = :pseudo, age = :birthday, mail = :email, password = :password, id_role = :id_role WHERE id = :id";
+        $sql = "UPDATE Utilisateur SET nom = :name, prenom = :firstname, pseudo = :pseudo, mail = :email WHERE id = :id";
         $query = $pdo->prepare($sql);
+        $query->bindValue(':id', $unUtilisateur->getId(), PDO::PARAM_INT);
         $query->bindValue(':name', $unUtilisateur->getName(), PDO::PARAM_STR);
         $query->bindValue(':firstname', $unUtilisateur->getFirstname(), PDO::PARAM_STR);
         $query->bindValue(':pseudo', $unUtilisateur->getPseudo(), PDO::PARAM_STR);
-        $query->bindValue(':birthday', $unUtilisateur->getBirthday(), PDO::PARAM_STR);
         $query->bindValue(':email', $unUtilisateur->getEmail(), PDO::PARAM_STR);
-        $query->bindValue(':password', $unUtilisateur->getPassword(), PDO::PARAM_STR);
-        $query->bindValue(':id_role', $unUtilisateur->getIdRole(), PDO::PARAM_INT);
-        $query->bindValue(':id', $unUtilisateur->getId(), PDO::PARAM_INT);
         $query->execute();
         $query->closeCursor();
     }

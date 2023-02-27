@@ -1,0 +1,71 @@
+<?php
+ini_set('display_errors', 'on');
+require_once 'includes/core/globals.php';
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <?php
+require 'includes/partials/page_head.phtml';
+?>
+</head>
+<body class="bodyCon">
+<header>
+    <?php
+    require_once 'includes/partials/navbar.phtml';
+    ?>
+</header>
+<main>
+
+    <form class="formSession" action="" method="POST">
+        <h3>CRÉER UNE SESSION :</h3>
+
+        <div class="titre">
+            <label for="titre">Titre</label>
+            <input type="text" name="titre" id="titre" >
+        </div>
+        <div class="description">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" >
+        </div>
+        <div class="jeu">
+            <label for="jeu">Jeu</label>
+            <select name="jeu" id="jeu">
+                <option value="">Choisir un jeu</option>
+                <?php
+                foreach ($lesCivilites as $civilite){
+                    if ($civilite->getId() == $unePersonne->getCivilite()->getId()){
+                        print('<option value="'.$civilite->getId().'" selected>'.$civilite->getLibelleLong().'</option>');
+                    }else{
+                        print('<option value="'.$civilite->getId().'">'.$civilite->getLibelleLong().'</option>');
+                    }
+                }
+                ?>
+            </select>
+        </div>
+        <div class="plateforme">
+            <label for="plateforme">Plateforme</label>
+            <select name="plateforme" id="plateforme">
+                <option value="">Choisir une plateforme</option>
+            </select>
+        </div>
+        <div class="dateDebut">
+            <label for="dateDebut">Debut de la session</label>
+            <input type="date" name="date" id="date" >
+        </div>
+        <div class="heureDebut">
+            <label for="heureDebut">Heure de debut</label>
+            <input type="time" name="heureDebut" id="heureDebut" >
+        </div>
+
+
+        <input type="submit" value="Enregistrer">
+
+    </form>
+
+</main>
+    <?php
+    require_once 'includes/partials/footerUser.phtml';
+    ?>
+</body>
+</html>

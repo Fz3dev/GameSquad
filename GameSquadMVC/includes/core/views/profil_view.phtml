@@ -1,0 +1,50 @@
+<?php
+ini_set('display_errors', 'on');
+require_once 'includes/core/globals.php';
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <?php
+    require_once 'includes/partials/page_head.phtml';
+    ?>
+</head>
+<body class="bodyCon">
+<header>
+    <?php
+    require_once 'includes/partials/navbar.phtml';
+    ?>
+</header>
+<main>
+
+    <fieldset>
+        <legend>Mon profil</legend>
+
+        <div class="profil">
+            <div class="profilInfo">
+
+                <p>Nom :  <?= $user->getName(); ?></p>
+                <p>Prénom :  <?= $user->getFirstname(); ?></p>
+                <p>Email :   <?= $user->getEmail(); ?></p>
+                <p>Pseudo : <?= $user->getPseudo(); ?> </p>
+
+            </div>
+
+
+        </div>
+        <div class="btnFormProfil">
+            <a href="index.php?page=user&action=profilUpdate"><button class="btnModSup" type="button">
+                    Modifier
+                </button></a>
+            <button class="btnModSup" id="btnSup" type="button">
+                    Supprimer
+                </button>
+        </div>
+
+    </fieldset>
+</main>
+    <?php
+    require_once 'includes/partials/footerUser.phtml';
+    ?>
+</body>
+</html>

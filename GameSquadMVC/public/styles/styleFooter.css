@@ -5,9 +5,9 @@ footer {
     color: whitesmoke;
     display: flex;
     align-items: center;
-    padding: 1rem 2rem ;
     font-size: 1.8rem;
     justify-content: space-between;
+    padding: 1rem;
 }
 footer img{
     width: 200px;

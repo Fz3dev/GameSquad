@@ -28,6 +28,11 @@ switch ($page){
         break;
 
     }
+    case 'session':{
+        require_once "includes/core/controllers/controller_session.php";
+        break;
+    }
+
     default:{
         require_once "includes/core/controllers/controller_error.php";
     }

@@ -34,7 +34,7 @@ switch ($action) {
                     'X-Mailer: PHP/' . phpversion();
                 // message confirmation mail envoyé
                 if (mail($to, $subject, $message, $headers)) {
-                    echo 'Votre message a bien été envoyé';
+                    echo '<div id="mailSend" > Votre message a bien été envoyé </div>';
                 } else {
                     echo 'Une erreur est survenue lors de l\'envoi du mail';
                 }

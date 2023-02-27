@@ -63,9 +63,9 @@ switch ($action) {
                     $_POST['pseudo'],
                     $_POST['birthday'],
                     $_POST['email'],
-                    $password,
                     1
                 );
+                $unUtilisateur->setPassword($password);
             }
             //on vérifie que l'utilisateur a bien ete créé
             if (isset($unUtilisateur)) {
@@ -144,5 +144,90 @@ switch ($action) {
             exit;
             break;
         }
+    case 'profil':
+        require_once 'includes/core/models/dao/daoUtilisateur.php';
 
+        {
+
+            if (!isset($_SESSION['user'])) {
+                header('Location: index.php?page=user&action=login');
+            }else {
+                $user = $_SESSION['user'];
+                require_once 'includes/core/views/profil_view.phtml';
+
+
+
+            }
+            break;
+        }
+    case 'profilUpdate':
+        require_once 'includes/core/models/dao/daoUtilisateur.php';
+
+        {
+            if (!isset($_SESSION['user'])) {
+                header('Location: index.php?page=user&action=login');
+            } else {
+                $user = $_SESSION['user'];
+                //Met à jour le profil
+                if (!empty($_POST)) {
+                    // le formulaire à été envoyé
+
+                    // on verifie que les champs sont remplis
+                    if (isset($_POST['name']) && isset($_POST['firstname']) && isset($_POST['pseudo']) && isset($_POST['email'])
+                        && !empty($_POST['name']) && !empty($_POST['firstname']) && !empty($_POST['pseudo']) && !empty($_POST['email'])
+                    ) {
+                        //on vérifie si l'email est valide  (filter_var)
+                        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                            die(' <div class="error"> Email invalide </div>');
+                        }
+                        //le formulaire est complet et les champs sont remplis.
+                        $user->setName($_POST['name']);
+                        $user->setFirstname($_POST['firstname']);
+                        $user->setPseudo($_POST['pseudo']);
+                        $user->setEmail($_POST['email']);
+
+                        $_SESSION['user'] = $user;
+                        //on met a jours avec la fonction updateUtilisateur
+                        updateUtilisateur($user);
+
+                        //on va rediriger l'utilisateur vers la page de connexion
+                        header("Location: index.php?page=user&action=profil");
+
+
+
+
+                    }
+
+
+
+                }
+                require_once 'includes/core/views/profil_update.phtml';
+
+                break;
+            }
+        }
+        case 'delete':
+        require_once 'includes/core/models/dao/daoUtilisateur.php';
+
+            {
+                if (!isset($_SESSION['user'])) {
+                    header('Location: index.php?page=user&action=login');
+                } else {
+                    $user = $_SESSION['user'];
+                    //on va supprimer l'utilisateur
+                    deleteUtilisateur($user->getId());
+                    //on va détruire la session
+                    session_destroy();
+                    //on va rediriger l'utilisateur vers la page de connexion
+                    header("Location: index.php?page=index&action=view");
+                    exit;
+                }
+
+
+                require_once 'includes/core/views/profil_delete.phtml';
+
+                break;
+            }
 }
+
+
