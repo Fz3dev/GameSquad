@@ -11,9 +11,9 @@ class Plateforme
      * @param int $id
      * @param string $nom
      */
-    public function __construct(int $id, string $nom)
+    public function __construct(string $nom)
     {
-        $this->id = $id;
+        $this->id = 0;
         $this->nom = $nom;
     }
 

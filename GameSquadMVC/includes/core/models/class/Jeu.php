@@ -19,9 +19,9 @@ class Jeu
      * @param string $classificationAge
      * @param string $anneeSortie
      */
-    public function __construct(int $id, string $nom, string $description, string $genre, string $classificationAge, string $anneeSortie)
+    public function __construct(string $nom, string $description  = '', string $genre = '', string $classificationAge  = '', string $anneeSortie  = '')
     {
-        $this->id = $id;
+        $this->id = 0;
         $this->nom = $nom;
         $this->description = $description;
         $this->genre = $genre;

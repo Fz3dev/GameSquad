@@ -20,9 +20,19 @@ switch ($action) {
     }
     case 'add':
     {
-        require_once 'includes/core/views/form_inscription.phtml';
+
+        $unUtilisateur= new Utilisateur();
         //on vérifie si le formulaire à ete envoyé
         if (!empty($_POST)) {
+            //on va créer un objet utilisateur
+            $unUtilisateur = new Utilisateur(
+                $_POST['name'],
+                $_POST['firstname'],
+                $_POST['pseudo'],
+                $_POST['birthday'],
+                $_POST['email'],
+                1
+            );
             // le formulaire à été envoyé
 
             // on verifie que les champs sont remplis
@@ -32,52 +42,52 @@ switch ($action) {
                 && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordConfirm'])
             ) {
                 //le formulaire est complet et les champs sont remplis.
-
+                $ok = true;
                 //on vérifie si l'email est valide  (filter_var)
                 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                    die(' <div class="error"> Email invalide </div>');
+                    print(' <div class="error"> Email invalide </div>');
+                    $ok = false;
                 }
 
                 //on vérifie si l'email est disponible
                 if (checkEmail($_POST['email'])) {
-                    die(' <div class="error"> Email déja utilisé </div>');
+                    print(' <div class="error"> Email déja utilisé </div>');
+                    $ok = false;
+
                 }
 
                 //on vérifie si le pseudo est disponible
                 if (checkPseudo($_POST['pseudo'])) {
-                    die( ' <div class="error"> Pseudo déja Utilisé </div>');
+                    print( ' <div class="error"> Pseudo déja Utilisé </div>');
+                    $ok = false;
+
                 }
 
                 //on vérifie si les mots de passe sont identiques
                 if ($_POST['password'] !== $_POST['passwordConfirm']) {
-                    die( ' <div class="error"> Les mots de passe renseignés ne sont pas identique. </div>');
+                    print( ' <div class="error"> Les mots de passe renseignés ne sont pas identique. </div>');
+                    $ok = false;
+
                 }
 
                 //on va hasher le mot de passe
                 $password = password_hash($_POST['password'], PASSWORD_ARGON2ID);
 
-                //on va créer un objet utilisateur
-                $unUtilisateur = new Utilisateur(
-                    $_POST['name'],
-                    $_POST['firstname'],
-                    $_POST['pseudo'],
-                    $_POST['birthday'],
-                    $_POST['email'],
-                    1
-                );
+
                 $unUtilisateur->setPassword($password);
             }
             //on vérifie que l'utilisateur a bien ete créé
-            if (isset($unUtilisateur)) {
+            if ($ok) {
+
                 //on va créer l'utilisateur
                 createUtilisateur($unUtilisateur);
                 //afficher un message de confirmation
-                $message = 'TON COMPTE A BIEN ETE CREE !';
+                $message = 'TON COMPTE A BIEN ÉTÉ CRÉÉ !';
                 //on va rediriger l'utilisateur vers la page de connexion
                 header("Location: index.php?page=index&action=view&message=" . urlencode($message));
-                exit;
+
             } else {
-                $message = 'Veuillez remplir tous les champs';
+                $message = 'Veuillez corriger votre saisie';
                 // LE FORMULAIRE N'EST PAS COMPLET
 
             }
@@ -85,6 +95,7 @@ switch ($action) {
 
 
         }
+        require_once 'includes/core/views/form_inscription.phtml';
         break;
     }
     case 'login':

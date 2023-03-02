@@ -21,12 +21,21 @@ function createJeu(Jeu $newJeu): void
 //Fonction qui permet de recuperer les jeux pour le select
 function getAllJeux(){
     $pdo = getConnexion();
-    $sql = "SELECT NOM FROM Jeu";
+    $sql = "SELECT ID, NOM FROM Jeux";
     $query = $pdo->prepare($sql);
     $query->execute();
-    $result = $query->fetchAll();
+    $listeJeux = array();
+
+    while ($SQLRow = $query->fetch(PDO::FETCH_ASSOC)){
+        $unJeu = new \class\Jeu($SQLRow['NOM']);
+
+        $unJeu->setId($SQLRow['ID']);
+
+        $listeJeux[] = $unJeu;
+
+    }
     $query->closeCursor();
-    return $result;
+    return $listeJeux;
 }
 //fonction pour un supprimer un jeu
 function deleteJeu($id){

@@ -11,9 +11,11 @@ class Session
     private string $nbJoueur;
     private string $id_Joueur;
     private $heureDebut;
+    private int $id_Jeu;
+    private int $id_Plateforme;
 
 
-    public function __construct($dateDebut, string $titre, string $description, string $nbJoueur, string $id_Joueur, $heureDebut)
+    public function __construct($dateDebut, string $titre, string $description, string $nbJoueur, string $id_Joueur, $heureDebut, int $id_Jeu, int $id_Plateforme)
     {
         $this->dateDebut = $dateDebut;
         $this->titre = $titre;
@@ -21,6 +23,8 @@ class Session
         $this->nbJoueur = $nbJoueur;
         $this->id_Joueur = $id_Joueur;
         $this->heureDebut = $heureDebut;
+        $this->id_Jeu = $id_Jeu;
+        $this->id_Plateforme = $id_Plateforme;
     }
 
     /**
@@ -31,7 +35,7 @@ class Session
         return $this->id;
     }
 
-    /**
+     /**
      * @return mixed
      */
     public function getDateDebut()
@@ -136,8 +140,36 @@ class Session
     }
 
     /**
-     * @return mixed
+     * @return int
      */
+    public function getIdJeu(): int
+    {
+        return $this->id_Jeu;
+    }
+
+    /**
+     * @param int $id_Jeu
+     */
+    public function setIdJeu(int $id_Jeu): void
+    {
+        $this->id_Jeu = $id_Jeu;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdPlateforme(): int
+    {
+        return $this->id_Plateforme;
+    }
+
+    /**
+     * @param int $id_Plateforme
+     */
+    public function setIdPlateforme(int $id_Plateforme): void
+    {
+        $this->id_Plateforme = $id_Plateforme;
+    }
 
 
 

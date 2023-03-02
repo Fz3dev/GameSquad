@@ -13,8 +13,8 @@ class Utilisateur
     private string $password;
     private int $role;
 
-    public function __construct(string $name, string $firstname,string $pseudo, $birthday,
-                                string $email, int $role = 1)
+    public function __construct(string $name = '', string $firstname ='',string $pseudo ='', $birthday ='',
+                                string $email ='', int $role = 1)
     {
         $this->name = $name;
         $this->firstname = $firstname;

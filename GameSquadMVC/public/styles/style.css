@@ -13,7 +13,7 @@ body{
     background-image: linear-gradient(to bottom, #f7f7f7, #d3cee2, #b2a5cc, #947db5, #78559c, #814690, #893482, #901d70, #af2d66, #c6465b, #d46353, #dc8150);
 }
 main{
-
+    padding: 1rem;
     display: flex;
     flex-direction: column;
 }
@@ -189,10 +189,11 @@ main{
     justify-content: center;
     padding: 0.75rem 1.25rem;
     margin: 30% auto;
+    border-radius: 20px;
     border: 1px solid #f7f7f7;
     height: 25%;
     width: 50%;
-    border-radius: 0.25rem;
+
     position: relative;
 }
 
@@ -299,6 +300,7 @@ input[type="submit"]:hover {
     cursor: pointer;
 }
 .error {
+    z-index: 1;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -401,9 +403,42 @@ legend {
     cursor: pointer;
 }
 
-/* ------ FORMULAIRE NEW SESSION ------ */
+/* ------ CARTE SESSION ------ */
+.cardsContainer {
+
+}
+.cardSession{
+    width: 70vw;
+    margin: 0 auto;
+    padding: 0.5rem;
+    background: aquamarine;
+    display: flex;
+    justify-content: space-between;
+}
+.containerSession{
+    margin: 1rem;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nbJoueur {
+    display: flex;
+}
+.presentationSession{
+    margin-bottom: 0.3rem;
 
 
+}
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 768px){

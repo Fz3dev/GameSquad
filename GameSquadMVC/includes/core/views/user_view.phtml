@@ -17,7 +17,41 @@ require 'includes/partials/page_head.phtml';
 </header>
 <main>
 
+    <div class="cardsContainer">
+        <div class="cardSession">
+            <div class="containerSession left">
+                <div class="avatarJoueur">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+                <div class="pseudoJoueur">
+                    <p>PseudoJoueur</p>
+                </div>
+            </div>
+            <div class="containerSession">
+                <div class="presentationSession">
+                    <h4>Titre de la Session</h4>
+                    <p>Description de la session</p>
+                </div>
+                <div class="jeuSession">
+                    <p>Jeux</p>
+                    <p>Plateforme</p>
+                </div>
+            </div>
+            <div class="containerSession right">
+                <div class="dateSession">
+                    <p>23/03/2022</p>
+                    <p> 21:00</p>
+                </div>
+                <div class="nbJoueur">
+                    <p>2/4</p>
+                    <button class="btn btn-primary">Rejoindre</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </main>
+
     <?php
     require_once 'includes/partials/footerUser.phtml';
     ?>
