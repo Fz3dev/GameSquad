@@ -21,9 +21,6 @@ switch ($action) {
 
             require_once 'includes/core/views/user_view.phtml';
         }
-
-        //afficher la page d'accueil
-
     break;
     }
     case 'add':
@@ -227,7 +224,6 @@ switch ($action) {
         }
         case 'delete':
         require_once 'includes/core/models/dao/daoUtilisateur.php';
-
             {
                 if (!isset($_SESSION['user'])) {
                     header('Location: index.php?page=user&action=login');
@@ -241,12 +237,20 @@ switch ($action) {
                     header("Location: index.php?page=index&action=view");
                     exit;
                 }
-
-
-                require_once 'includes/core/views/profil_delete.phtml';
-
                 break;
             }
+        case 'squad':
+            {
+                if (!isset($_SESSION['user'])) {
+                    header('Location: index.php?page=user&action=login');
+                }else {
+
+
+                    require_once 'includes/core/views/user_squad.phtml';
+                }
+                break;
+            }
+
 }
 
 

@@ -60,3 +60,50 @@ function getAllSessions(): array
 
 }
 
+//fonction qui permet de récuperer les sessions qui appartiennent à un utilisateur
+
+function getSessionsByUser($id): array
+{
+    $conn = getConnexion();
+
+    $SQLQuery = "SELECT s.ID, s.DateDebut, s.Titre, s.Description, s.NbJoueur, s.ID_Joueur, s.HeureDebut,
+                        s.id_jeu, s.id_plateforme, u.Pseudo, j.Nom as NomJeux, p.Nom as NomPlateforme 
+            FROM Session s INNER JOIN Utilisateur u ON s.ID_Joueur = u.ID
+                           INNER JOIN Jeux j ON s.id_jeu = j.ID
+                           INNER JOIN Plateforme p ON s.id_plateforme = p.ID
+                           WHERE s.ID_Joueur = :id;";
+
+    $SQLStmt = $conn->prepare($SQLQuery);
+    $SQLStmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $SQLStmt->execute();
+
+    $listeSessions = array();
+
+    while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)) {
+        $hote = new \class\Hote($SQLRow['ID_Joueur'], $SQLRow['Pseudo']);
+
+        $uneSession = new Session($SQLRow['DateDebut'], $SQLRow['Titre'], $SQLRow['Description'], $SQLRow['NbJoueur'],
+            $hote , $SQLRow['HeureDebut'], $SQLRow['id_jeu'], $SQLRow['id_plateforme']);
+
+        $uneSession->setId($SQLRow['ID']);
+
+        $listeSessions[] = $uneSession;
+    }
+
+    $SQLStmt->closeCursor();
+
+    return $listeSessions;
+}
+//recuperer l'id de la session
+
+//fonction qui permet de supprimer une session
+function deleteSession($id):void
+{
+    $conn = getConnexion();
+    $SQLQuery = "DELETE FROM Session WHERE ID = :id;";
+    $SQLStmt = $conn->prepare($SQLQuery);
+    $SQLStmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $SQLStmt->execute();
+    $SQLStmt->closeCursor();
+}
+

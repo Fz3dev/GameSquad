@@ -347,13 +347,6 @@ input[type="submit"]:hover {
     outline-color: #dc8150;
 }
 
-
-
-/* ------ FORMULAIRE CONNEXION ------ */
-.bodyCon {
-    height: 100%;
-}
-
 /* ------ PROFIL PAGE ------ */
 fieldset {
      display: flex;
@@ -531,6 +524,11 @@ legend {
 }
 */
 /* MEDIA QUERIES */
+@media screen and (min-width: 768px){
+    .bodyCon {
+        height: 100vh;
+    }
+}
 
 @media screen and (max-width: 768px){
 

@@ -1,0 +1,78 @@
+<?php
+ini_set('display_errors', 'on');
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <?php
+require 'includes/partials/page_head.phtml';
+?>
+</head>
+<body class="bodyCon">
+<header>
+    <?php
+    require_once 'includes/partials/navbar.phtml';
+    ?>
+</header>
+<main>
+
+    <form class="formSession" action="" method="POST">
+        <h3>CRÉER UNE SESSION :</h3>
+
+        <div class="titre">
+            <label for="titre">Titre</label>
+            <input type="text" name="titre" id="titre" required>
+        </div>
+        <div class="description">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" >
+        </div>
+        <div class="jeu">
+            <label for="jeu">Jeu</label>
+            <select name="jeu" id="jeu" required>
+                <option value="">Choisir un jeu</option>
+                <?php
+
+                foreach ($jeux as $jeu) {
+                    echo "<option value=\"{$jeu->getId()}\">{$jeu->getNom()}</option>";
+                }
+                ?>
+
+            </select>
+        </div>
+        <div class="plateforme">
+            <label for="plateforme">Plateforme</label>
+            <select name="plateforme" id="plateforme" required>
+                <option value="">Choisir une plateforme</option>
+                <?php
+                foreach ($plateformes as $plateforme) {
+                    echo "<option value=\"{$plateforme->getId()}\">{$plateforme->getNom()}</option>";
+                }
+                ?>
+            </select>
+        </div>
+        <div class="dateDebut">
+            <label for="dateDebut">Debut de la session</label>
+            <input type="date" name="dateDebut" id="dateDebut" required>
+        </div>
+        <div class="heureDebut">
+            <label for="heureDebut">Heure de debut</label>
+            <input type="time" name="heureDebut" id="heureDebut" required >
+        </div>
+        <div class="nbJoueur">
+            <label for="nbJoueur">Nombre de joueur</label>
+            <input type="number" name="nbJoueur" id="nbJoueur" min="2" value="2" required>
+        </div>
+
+
+        <input type="submit" value="Enregistrer">
+
+    </form>
+
+</main>
+    <?php
+    require_once 'includes/partials/footerUser.phtml';
+    ?>
+</body>
+</html>
