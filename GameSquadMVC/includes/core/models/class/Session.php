@@ -1,6 +1,7 @@
 <?php
 
 namespace class;
+require_once 'includes/core/models/class/Hote.php';
 
 class Session
 {
@@ -9,19 +10,20 @@ class Session
     private string $titre;
     private string $description;
     private string $nbJoueur;
-    private string $id_Joueur;
+    private Hote $hote;
     private $heureDebut;
     private int $id_Jeu;
     private int $id_Plateforme;
 
 
-    public function __construct($dateDebut, string $titre, string $description, string $nbJoueur, string $id_Joueur, $heureDebut, int $id_Jeu, int $id_Plateforme)
+    public function __construct($dateDebut, string $titre, string $description, string $nbJoueur,
+                                 Hote $hote,$heureDebut, int $id_Jeu, int $id_Plateforme)
     {
         $this->dateDebut = $dateDebut;
         $this->titre = $titre;
         $this->description = $description;
         $this->nbJoueur = $nbJoueur;
-        $this->id_Joueur = $id_Joueur;
+        $this->hote = $hote;
         $this->heureDebut = $heureDebut;
         $this->id_Jeu = $id_Jeu;
         $this->id_Plateforme = $id_Plateforme;
@@ -108,19 +110,19 @@ class Session
     }
 
     /**
-     * @return string
+     * @return Hote
      */
-    public function getIdJoueur(): string
+    public function getHote(): Hote
     {
-        return $this->id_Joueur;
+        return $this->hote;
     }
 
     /**
-     * @param string $id_Joueur
+     * @param Hote $hote
      */
-    public function setIdJoueur(string $id_Joueur): void
+    public function setHote(Hote $hote): void
     {
-        $this->id_Joueur = $id_Joueur;
+        $this->hote = $hote;
     }
 
     /**

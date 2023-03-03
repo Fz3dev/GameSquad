@@ -18,6 +18,7 @@ main{
     flex-direction: column;
 }
 
+
 @font-face {
     font-family: 'sofiaSBI';
     src: url("../medias/font/Sofia_Sans_Extra_Condensed/static/SofiaSansExtraCondensed-SemiBoldItalic.ttf") format("truetype");
@@ -405,6 +406,95 @@ legend {
 
 /* ------ CARTE SESSION ------ */
 .cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.cardSession {
+    font-family: sofiaR;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.31);
+    color: whitesmoke;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    width: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.containerSession {
+    padding: 20px;
+}
+
+.containerSession.left {
+    border-right: 1px solid #e6e6e6;
+}
+
+.avatarJoueur {
+    background-color: #eee;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+}
+
+.avatarJoueur i {
+    color: #333;
+    font-size: 24px;
+}
+
+.pseudoJoueur {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.presentationSession {
+    margin-bottom: 20px;
+}
+
+.jeuSession p {
+    margin: 0;
+}
+
+.containerSession.right {
+    border-left: 1px solid #e6e6e6;
+}
+
+.dateSession p {
+    margin: 0;
+}
+
+.nbJoueur {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.nbJoueur button {
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #008cba;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.nbJoueur button:hover {
+    background-color: #006a8c;
+}
+
+/*
+.cardsContainer {
 
 }
 .cardSession{
@@ -439,6 +529,7 @@ legend {
 
 
 }
+*/
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 768px){

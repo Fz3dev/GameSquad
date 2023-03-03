@@ -25,3 +25,16 @@ function getAllPlateformes()
     $query->closeCursor();
     return $listePlateformes;
 }
+
+//fonction qui permet de recuperer une plateforme par son id
+
+function getPlateformeById($id){
+    $pdo = getConnexion();
+    $sql = "SELECT NOM FROM Plateforme WHERE id = :id";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+    $nomPlateforme = $query->fetch(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    return $nomPlateforme['NOM'];
+}

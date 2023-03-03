@@ -16,39 +16,49 @@ require 'includes/partials/page_head.phtml';
     ?>
 </header>
 <main>
-
     <div class="cardsContainer">
-        <div class="cardSession">
-            <div class="containerSession left">
-                <div class="avatarJoueur">
-                    <i class="fa-solid fa-circle-user"></i>
-                </div>
-                <div class="pseudoJoueur">
-                    <p>PseudoJoueur</p>
-                </div>
-            </div>
-            <div class="containerSession">
-                <div class="presentationSession">
-                    <h4>Titre de la Session</h4>
-                    <p>Description de la session</p>
-                </div>
-                <div class="jeuSession">
-                    <p>Jeux</p>
-                    <p>Plateforme</p>
-                </div>
-            </div>
-            <div class="containerSession right">
-                <div class="dateSession">
-                    <p>23/03/2022</p>
-                    <p> 21:00</p>
-                </div>
-                <div class="nbJoueur">
-                    <p>2/4</p>
-                    <button class="btn btn-primary">Rejoindre</button>
-                </div>
-            </div>
-        </div>
+    <?php
+    // on affiche les sessions proposées par tous les utilisateurs
+    $lesSessions = getAllSessions();
+
+    foreach ($lesSessions as $uneSession) {
+        $unJeu = getJeuById($uneSession->getIdjeu());
+        $unePlateforme = getPlateformeById($uneSession->getIdplateforme());
+
+        echo '<div class="cardSession">';
+        echo '<div class="containerSession left">';
+        echo '<div class="avatarJoueur">';
+        echo '<i class="fa-solid fa-circle-user"></i>';
+        echo '</div>';
+        echo '<div class="pseudoJoueur">';
+        echo '<p>' . $uneSession->getHote()->getPseudo() . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="containerSession">';
+        echo '<div class="presentationSession">';
+        echo '<h4>' . $uneSession->getTitre() . '</h4>';
+        echo '<p>' . $uneSession->getDescription() . '</p>';
+        echo '</div>';
+        echo '<div class="jeuSession">';
+        echo '<p>' . $unJeu. '</p>';
+        echo '<p>' . $unePlateforme . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="containerSession right">';
+        echo '<div class="dateSession">';
+        echo '<p>' . date_format(date_create($uneSession->getDateDebut()), 'd/m/Y') . '</p>';
+        echo '<p>' . $uneSession->getHeureDebut() . '</p>';
+        echo '</div>';
+        echo '<div class="nbJoueur">';
+        echo '<p> 1/ ' . $uneSession->getNbJoueur() . '</p>';
+        echo '<button class="btn btn-primary">Rejoindre</button>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+    ?>
     </div>
+
 
 </main>
 

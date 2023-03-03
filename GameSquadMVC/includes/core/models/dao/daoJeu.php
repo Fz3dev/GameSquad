@@ -60,3 +60,15 @@ function updateJeu(Jeu $newJeu): void
     $query->execute();
     $query->closeCursor();
 }
+
+//fonction pour recuperer un jeu par l'id
+function getJeuById($id){
+    $pdo = getConnexion();
+    $sql = "SELECT NOM  FROM Jeux WHERE id = :id";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+    $nomJeu = $query->fetch(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    return $nomJeu['NOM'];
+}

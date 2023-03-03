@@ -4,6 +4,12 @@ use class\Utilisateur;
 
 require_once 'includes/core/models/dao/daoUtilisateur.php';
 require_once 'includes/core/models/class/Utilisateur.php';
+require_once 'includes/core/models/dao/daoSession.php';
+require_once 'includes/core/models/class/Session.php';
+require_once 'includes/core/models/dao/daoJeu.php';
+require_once 'includes/core/models/class/Jeu.php';
+require_once 'includes/core/models/dao/daoPlateforme.php';
+require_once 'includes/core/models/class/Plateforme.php';
 
 $action = $_GET['action'] ?? 'view';
 switch ($action) {
@@ -11,6 +17,8 @@ switch ($action) {
         if (!isset($_SESSION['user'])) {
             header('Location: index.php?page=user&action=login');
         }else {
+
+
             require_once 'includes/core/views/user_view.phtml';
         }
 

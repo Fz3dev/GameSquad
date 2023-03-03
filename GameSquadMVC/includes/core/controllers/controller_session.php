@@ -26,8 +26,10 @@ switch ($action) {
                 $dateDebut = $_POST['dateDebut'];
                 $heureDebut = $_POST['heureDebut'];
                 $idHote = $_SESSION['user']->getId();
-                $session = new Session($dateDebut, $titre, $description, $nbJoueur, $idHote,$heureDebut, $jeu, $plateforme);
-                var_dump($session);
+                $pseudoHote = $_SESSION['user']->getPseudo();
+                $hote = new \class\Hote($idHote, $pseudoHote);
+
+                $session = new Session($dateDebut, $titre, $description, $nbJoueur, $hote, $heureDebut, $jeu, $plateforme);
                 createSession($session);
                 header("Location: index.php?page=user&action=view");
                 exit;
