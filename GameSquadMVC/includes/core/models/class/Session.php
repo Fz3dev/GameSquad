@@ -9,14 +9,14 @@ class Session
     private $dateDebut;
     private string $titre;
     private string $description;
-    private string $nbJoueur;
+    private int $nbJoueur;
     private Hote $hote;
     private $heureDebut;
     private int $id_Jeu;
     private int $id_Plateforme;
 
 
-    public function __construct($dateDebut, string $titre, string $description, string $nbJoueur,
+    public function __construct($dateDebut, string $titre, string $description, int $nbJoueur,
                                  Hote $hote,$heureDebut, int $id_Jeu, int $id_Plateforme)
     {
         $this->dateDebut = $dateDebut;
@@ -40,7 +40,7 @@ class Session
      /**
      * @return mixed
      */
-    public function getDateDebut()
+    public function getDateDebut(): mixed
     {
         return $this->dateDebut;
     }
@@ -94,17 +94,17 @@ class Session
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getNbJoueur(): string
+    public function getNbJoueur(): int
     {
         return $this->nbJoueur;
     }
 
     /**
-     * @param string $nbJoueur
+     * @param int $nbJoueur
      */
-    public function setNbJoueur(string $nbJoueur): void
+    public function setNbJoueur(int $nbJoueur): void
     {
         $this->nbJoueur = $nbJoueur;
     }

@@ -245,7 +245,6 @@ switch ($action) {
                     header('Location: index.php?page=user&action=login');
                 }else {
 
-
                     require_once 'includes/core/views/user_squad.phtml';
                 }
                 break;

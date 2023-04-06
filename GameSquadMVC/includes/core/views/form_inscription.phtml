@@ -12,43 +12,44 @@ require_once 'includes/core/globals.php';
 </head>
 
 <body>
-    <main>
-        <form action="" method="post">
-            <h3>REJOINS LA COMMU !</h3>
-            <div class="name">
-                <label for="name">Nom</label>
-                <input type="text" name="name" id="name" value="<?= $unUtilisateur->getName();?>" required>
-            </div>
-            <div class="firstname">
-                <label for="firstname">Prénom</label>
-                <input type="text" name="firstname" id="firstname" value="<?= $unUtilisateur->getFirstname();?>" required>
-            </div>
-            <div class="pseudo">
-                <label for="pseudo">Pseudo</label>
-                <input type="text" name="pseudo" id="pseudo" value="<?= $unUtilisateur->getPseudo();?>" required>
-            </div>
-            <div class="birthday">
-                <label for="birthday">Date de naissance</label>
-                <input type="date" name="birthday" id="birthday" min="1923-01-01"  max="" value="<?= $unUtilisateur->getBirthday();?>"required>
-            </div>
-            <div class="email">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" value="<?= $unUtilisateur->getEmail();?>" required>
-            </div>
-            <div class="password">
-                <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password" value="<?= $unUtilisateur->getPassword();?>"required>
-            </div>
-            <div class="passwordConfirm">
-                <label for="passwordConfirm">Confirmer le mot de passe</label>
-                <input type="password" name="passwordConfirm" id="passwordConfirm" value="<?= $unUtilisateur->getPassword();?>"required>
-            </div>
-            <input type="submit" value="S'INSCRIRE !">
-        </form>
-    </main>
+<main>
+    <form action="" method="post">
+        <h3>REJOINS LA COMMU !</h3>
+        <div class="name">
+            <label for="name">Nom</label>
+            <input type="text" name="name" id="name" value="<?= htmlentities($unUtilisateur->getName(), ENT_QUOTES, 'UTF-8'); ?>" required>
+        </div>
+        <div class="firstname">
+            <label for="firstname">Prénom</label>
+            <input type="text" name="firstname" id="firstname" value="<?= htmlentities($unUtilisateur->getFirstname(), ENT_QUOTES, 'UTF-8'); ?>" required>
+        </div>
+        <div class="pseudo">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" name="pseudo" id="pseudo" value="<?= htmlentities($unUtilisateur->getPseudo(), ENT_QUOTES, 'UTF-8'); ?>" required>
+        </div>
+        <div class="birthday">
+            <label for="birthday">Date de naissance</label>
+            <input type="date" name="birthday" id="birthday" min="1923-01-01"  max="" value="<?= htmlentities($unUtilisateur->getBirthday(), ENT_QUOTES, 'UTF-8'); ?>"required>
+        </div>
+        <div class="email">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="<?= htmlentities($unUtilisateur->getEmail(), ENT_QUOTES, 'UTF-8'); ?>" required>
+        </div>
+        <div class="password">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" value="<?= htmlentities($unUtilisateur->getPassword(), ENT_QUOTES, 'UTF-8'); ?>"required>
+        </div>
+        <div class="passwordConfirm">
+            <label for="passwordConfirm">Confirmer le mot de passe</label>
+            <input type="password" name="passwordConfirm" id="passwordConfirm" value="<?= htmlentities($unUtilisateur->getPassword(), ENT_QUOTES, 'UTF-8'); ?>"required>
+        </div>
+        <input type="submit" value="<?= htmlentities("S'INSCRIRE !", ENT_QUOTES, 'UTF-8'); ?>">
+    </form>
+</main>
 
-        <?php
-        require 'includes/partials/footer.phtml';
-        ?>
+<?php
+require 'includes/partials/footer.phtml';
+?>
 
 </body>
+</html>

@@ -50,7 +50,7 @@ switch ($action) {
             $id = $user->getId();
             $lesSessions = getSessionsByUser($id);
             foreach ($lesSessions as $uneSession)
-            $idSession = $uneSession->getId();
+                $idSession = $uneSession->getId();
             $session = getSessionById($idSession);
             $jeux = getAllJeux();
             $plateformes = getAllPlateformes();
@@ -58,8 +58,7 @@ switch ($action) {
                 // le formulaire à été envoyé
                 // on verifie que les champs sont remplis
                 if (isset($_POST['titre']) && isset($_POST['description']) && isset($_POST['nbJoueur']) && isset($_POST['jeu']) && isset($_POST['plateforme']) && isset($_POST['dateDebut']) && isset($_POST['heureDebut'])
-                    && !empty($_POST['titre']) && !empty($_POST['description']) && !empty($_POST['nbJoueur']) && !empty($_POST['jeu']) && !empty($_POST['plateforme']) && !empty($_POST['dateDebut']) && !empty($_POST['heureDebut']))
-                {
+                    && !empty($_POST['titre']) && !empty($_POST['description']) && !empty($_POST['nbJoueur']) && !empty($_POST['jeu']) && !empty($_POST['plateforme']) && !empty($_POST['dateDebut']) && !empty($_POST['heureDebut'])) {
                     // on va créer une session
                     $titre = $_POST['titre'];
                     $description = $_POST['description'];
@@ -71,6 +70,7 @@ switch ($action) {
                     $idHote = $_SESSION['user']->getId();
                     $pseudoHote = $_SESSION['user']->getPseudo();
                     $hote = new \class\Hote($idHote, $pseudoHote);
+
                     $session = new Session($dateDebut, $titre, $description, $nbJoueur, $hote, $heureDebut, $jeu, $plateforme);
                     updateSession($session);
                     header("Location: index.php?page=user&action=view");
@@ -80,9 +80,9 @@ switch ($action) {
                     $error = "Veuillez remplir tous les champs";
                 }
             }
-    }
-        require_once 'includes/core/views/form_session.phtml';
-        break;
+            require_once 'includes/core/views/session_update.phtml';
+            break;
+        }
     }
 
     case 'delete':

@@ -94,8 +94,53 @@ function getSessionsByUser($id): array
 
     return $listeSessions;
 }
-//recuperer l'id de la session
+//function qui permet de récupérer une session par son id
+function getSessionById($id): Session
+{
+    $conn = getConnexion();
 
+    $SQLQuery = "SELECT s.ID, s.DateDebut, s.Titre, s.Description, s.NbJoueur, s.ID_Joueur, s.HeureDebut,
+                        s.id_jeu, s.id_plateforme, u.Pseudo, j.Nom as NomJeux, p.Nom as NomPlateforme 
+            FROM Session s INNER JOIN Utilisateur u ON s.ID_Joueur = u.ID
+                           INNER JOIN Jeux j ON s.id_jeu = j.ID
+                           INNER JOIN Plateforme p ON s.id_plateforme = p.ID
+                           WHERE s.ID = :id;";
+
+    $SQLStmt = $conn->prepare($SQLQuery);
+    $SQLStmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $SQLStmt->execute();
+
+    $SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC);
+
+    $hote = new \class\Hote($SQLRow['ID_Joueur'], $SQLRow['Pseudo']);
+
+    $uneSession = new Session($SQLRow['DateDebut'], $SQLRow['Titre'], $SQLRow['Description'], $SQLRow['NbJoueur'],
+        $hote , $SQLRow['HeureDebut'], $SQLRow['id_jeu'], $SQLRow['id_plateforme']);
+
+    $uneSession->setId($SQLRow['ID']);
+
+    $SQLStmt->closeCursor();
+
+    return $uneSession;
+}
+//fonction qui permet de modifier une session
+function updateSession(Session $session):void
+{
+    $conn = getConnexion();
+    $SQLQuery = "UPDATE Session SET ID = :id, DateDebut = :date, Titre = :titre, Description = :description, NbJoueur = :nbJoueur, HeureDebut = :heureDebut, id_jeu = :id_jeu, id_plateforme = :id_plateforme WHERE ID = :id;";
+    $SQLStmt = $conn->prepare($SQLQuery);
+    $SQLStmt->bindValue(':date', $session->getDateDebut(), PDO::PARAM_STR);
+    $SQLStmt->bindValue(':titre', $session->getTitre(), PDO::PARAM_STR);
+    $SQLStmt->bindValue(':description', $session->getDescription(), PDO::PARAM_STR);
+    $SQLStmt->bindValue(':nbJoueur', $session->getNbJoueur(), PDO::PARAM_INT);
+    $SQLStmt->bindValue(':id_Joueur', $session->getHote()->getId(), PDO::PARAM_INT);
+    $SQLStmt->bindValue(':heureDebut', $session->getHeureDebut(), PDO::PARAM_STR);
+    $SQLStmt->bindValue(':id_jeu', $session->getIdJeu(), PDO::PARAM_INT);
+    $SQLStmt->bindValue(':id_plateforme', $session->getIdPlateforme(), PDO::PARAM_INT);
+    $SQLStmt->bindValue(':id', $session->setId(), PDO::PARAM_INT);
+    $SQLStmt->execute();
+    $SQLStmt->closeCursor();
+}
 //fonction qui permet de supprimer une session
 function deleteSession($id):void
 {
@@ -106,4 +151,3 @@ function deleteSession($id):void
     $SQLStmt->execute();
     $SQLStmt->closeCursor();
 }
-

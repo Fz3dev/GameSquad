@@ -24,6 +24,7 @@ require 'includes/partials/page_head.phtml';
     $id = $user->getId();
     //on recupere les sessions de l'utilisateur connecté
     $lesSessions = getSessionsByUser($id);
+    var_dump($lesSessions);
 
 
     foreach ($lesSessions as $uneSession) {
