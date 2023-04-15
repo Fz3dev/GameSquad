@@ -47,11 +47,12 @@ switch ($action) {
             header('Location: index.php?page=user&action=login');
         } else {
             $user = $_SESSION['user'];
+            $idSession= $_GET['id'];
+
             $id = $user->getId();
             $lesSessions = getSessionsByUser($id);
             foreach ($lesSessions as $uneSession)
-                $idSession = $uneSession->getId();
-            $session = getSessionById($idSession);
+                $session = getSessionById($idSession);
             $jeux = getAllJeux();
             $plateformes = getAllPlateformes();
             if (!empty($_POST)) {
@@ -71,9 +72,16 @@ switch ($action) {
                     $pseudoHote = $_SESSION['user']->getPseudo();
                     $hote = new \class\Hote($idHote, $pseudoHote);
 
-                    $session = new Session($dateDebut, $titre, $description, $nbJoueur, $hote, $heureDebut, $jeu, $plateforme);
-                    updateSession($session);
-                    header("Location: index.php?page=user&action=view");
+                    $session->setDateDebut($dateDebut);
+                    $session->setTitre($titre);
+                    $session->setDescription($description);
+                    $session->setNbJoueur($nbJoueur);
+                    $session->setIdJeu($jeu);
+                    $session->setIdPlateforme($plateforme);
+                    $session->setHeureDebut($heureDebut);
+                    updateSession($session, $idHote, $pseudoHote, $jeu, $plateforme, $dateDebut, $heureDebut, $nbJoueur);
+
+                    header("Location: index.php?page=user&action=squad");
                     exit;
                 } else {
                     // LE FORMULAIRE N'EST PAS COMPLET
@@ -84,6 +92,7 @@ switch ($action) {
             break;
         }
     }
+
 
     case 'delete':
     {

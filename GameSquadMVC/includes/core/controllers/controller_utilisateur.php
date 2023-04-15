@@ -53,26 +53,21 @@ switch ($action) {
                     print(' <div class="error"> Email invalide </div>');
                     $ok = false;
                 }
-
                 //on vérifie si l'email est disponible
                 if (checkEmail($_POST['email'])) {
                     print(' <div class="error"> Email déja utilisé </div>');
                     $ok = false;
 
                 }
-
                 //on vérifie si le pseudo est disponible
                 if (checkPseudo($_POST['pseudo'])) {
                     print( ' <div class="error"> Pseudo déja Utilisé </div>');
                     $ok = false;
-
                 }
-
                 //on vérifie si les mots de passe sont identiques
                 if ($_POST['password'] !== $_POST['passwordConfirm']) {
                     print( ' <div class="error"> Les mots de passe renseignés ne sont pas identique. </div>');
                     $ok = false;
-
                 }
 
                 //on va hasher le mot de passe
@@ -128,23 +123,16 @@ switch ($action) {
                 }
 
                 //on va vérifier si le mot de passe est correct
-
                 if (!checkPassword($_POST['email'], $_POST['password'])) {
                     die(' <div class="error"> Utilisateur et/ou  Mot de passe incorrect </div>');
                 } else {
-
                     //on va créer une session
-
-
                     $User = getUtilisateur($_POST['email']);
-
                     $_SESSION['user'] = $User;
-
 
                     ///on va rediriger l'utilisateur vers la page d'accueil
                     header("Location: index.php?page=user&action=view");
                     exit;
-
                 }
             } else {
                 // LE FORMULAIRE N'EST PAS COMPLET

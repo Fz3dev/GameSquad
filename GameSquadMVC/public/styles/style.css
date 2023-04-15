@@ -5,12 +5,28 @@
 
 }
 
+
 body{
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: linear-gradient(to bottom, #f7f7f7, #d3cee2, #b2a5cc, #947db5, #78559c, #814690, #893482, #901d70, #af2d66, #c6465b, #d46353, #dc8150);
+    min-height: 100vh; /* Définir la taille du fond */
+    background: linear-gradient(
+            180deg,
+            hsl(260deg 28% 72%) 0%,
+            hsl(264deg 27% 65%) 9%,
+            hsl(267deg 27% 59%) 19%,
+            hsl(269deg 27% 52%) 28%,
+            hsl(287deg 26% 46%) 37%,
+            hsl(335deg 33% 52%) 47%,
+            hsl(357deg 52% 59%) 56%,
+            hsl(10deg 79% 61%) 65%,
+            hsl(17deg 88% 61%) 74%,
+            hsl(23deg 87% 61%) 83%,
+            hsl(29deg 85% 61%) 92%,
+            hsl(35deg 83% 61%) 100%
+    ) local;
 }
 main{
     padding: 1rem;
@@ -55,7 +71,7 @@ main{
     align-items: center;
 }
 .imgHome img{
-    width: 70%;
+    width: 100%;
 }
 .btnHome{
     display: flex;
@@ -66,12 +82,11 @@ main{
 .btnHome ul li {
     padding: 1rem;
     margin: 1.8rem;
+    min-width: 120px;
     border: none;
-    background-color: #c0a9d3;
+    background-color: whitesmoke;
     border-radius: 20px;
-    box-shadow: 10px 15px 73px 9px rgba(86,28,121,0.8);
-    cursor: pointer;
-    font-weight: bold;
+    box-shadow: -13px 16px 15px 0px rgba(0,0,0,0.1);    font-weight: bold;
     transition: 0.5s;
     font-family: 'sofiaSBI';
     font-size:1.8rem;
@@ -79,10 +94,10 @@ main{
     text-align: center;
 }
 .btnHome ul li:hover {
-    transform:scale(1.1);
+    transform:scale(1.05);
 }
 .btnHome ul li a{
-    color: rgb(220, 129, 80);
+    color: #53555d;
     transition: 0.5s;
 }
 .btnHome ul li a:hover {
@@ -111,8 +126,10 @@ main{
     width: 250px    ;
     height: 250px;
     border: solid whitesmoke 0.5rem;
+    background: whitesmoke;
     border-radius: 25%;
     padding: 0.3rem;
+    box-shadow: 0px 0px 10px 13px rgba(0,0,0,0.1);
 }
 .nbrs {
     text-align: center;
@@ -524,11 +541,7 @@ legend {
 }
 */
 /* MEDIA QUERIES */
-@media screen and (min-width: 768px){
-    .bodyCon {
-        height: 100vh;
-    }
-}
+
 
 @media screen and (max-width: 768px){
 

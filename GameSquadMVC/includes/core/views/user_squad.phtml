@@ -24,10 +24,11 @@ require 'includes/partials/page_head.phtml';
     $id = $user->getId();
     //on recupere les sessions de l'utilisateur connecté
     $lesSessions = getSessionsByUser($id);
-    var_dump($lesSessions);
+
 
 
     foreach ($lesSessions as $uneSession) {
+        var_dump($uneSession->getId());
         $unJeu = getJeuById($uneSession->getIdjeu());
         $unePlateforme = getPlateformeById($uneSession->getIdplateforme());
 
@@ -58,7 +59,7 @@ require 'includes/partials/page_head.phtml';
         echo '<div class="nbJoueur">';
         echo '<p> 1/ ' . $uneSession->getNbJoueur() . '</p>';
         echo '<ul>';
-        echo '<li class="btn btn-primary"><a href="index.php?page=session&action=update">Modifier</a></li>';
+    echo '<li class="btn btn-primary"><a href="index.php?page=session&action=update&id=' .  $uneSession->getId() . '">Modifier</a></li>';
         echo '<li class="btn btn-primary"><a href="index.php?page=session&action=delete">Supprimer</a></li>';
         echo '</ul>';
         echo '</div>';

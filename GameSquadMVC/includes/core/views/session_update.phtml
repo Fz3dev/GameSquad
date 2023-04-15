@@ -20,6 +20,7 @@ require 'includes/partials/page_head.phtml';
     <form class="formSession" action="" method="POST">
         <h3>MODIFIER UNE SESSION </h3>
 
+
         <div class="titre">
             <label for="titre">Titre</label>
             <input type="text" name="titre" id="titre" value=" <?= $session->getTitre() ?>">
@@ -31,38 +32,36 @@ require 'includes/partials/page_head.phtml';
         <div class="jeu">
             <label for="jeu">Jeu</label>
             <select name="jeu" id="jeu" required>
-                <option value=""></option>
-                <?php
-
-                foreach ($jeux as $jeu) {
-                    echo "<option value=\"{$jeu->getId()}\">{$jeu->getNom()}</option>";
-                }
-                ?>
-
+                <?php foreach ($jeux as $jeu) { ?>
+                    <option value="<?= $jeu->getId() ?>" <?= ($jeu->getId() == $session->getIdJeu()) ? 'selected' : '' ?>>
+                        <?= $jeu->getNom() ?>
+                    </option>
+                <?php } ?>
             </select>
         </div>
         <div class="plateforme">
             <label for="plateforme">Plateforme</label>
             <select name="plateforme" id="plateforme" required>
-                <option value="<?= $session->getIdPlateforme() ?>">Choisir une plateforme</option>
                 <?php
-                foreach ($plateformes as $plateforme) {
-                    echo "<option value=\"{$plateforme->getId()}\">{$plateforme->getNom()}</option>";
-                }
+                foreach ($plateformes as $plateforme) {  ?>
+                    <option value="<?= $plateforme->getId() ?>" <?= ($plateforme->getId() == $session->getIdPlateforme()) ? 'selected' : ''?>>
+                        <?= $plateforme->getNom() ?>
+                    </option>";
+               <?php }
                 ?>
             </select>
         </div>
         <div class="dateDebut">
             <label for="dateDebut">Debut de la session</label>
-            <input type="date" name="dateDebut" id="dateDebut" value="<?= date_format(date_create($session->getDateDebut()), 'd/m/Y') ?>"required>
+            <input type="date" name="dateDebut" id="dateDebut" value="<?= date_format(date_create($session->getDateDebut()), 'Y-m-d') ?>" required>
         </div>
         <div class="heureDebut">
             <label for="heureDebut">Heure de debut</label>
-            <input type="time" name="heureDebut" id="heureDebut" value=" <?= $session->getHeureDebut() ?>"required >
+            <input type="time" name="heureDebut" id="heureDebut" value="<?= $session->getHeureDebut() ?>" required >
         </div>
         <div class="nbJoueur">
             <label for="nbJoueur">Nombre de joueur</label>
-            <input type="number" name="nbJoueur" id="nbJoueur" min="2" value=" <?= $session->getNbJoueur() ?>" required>
+            <input type="number" name="nbJoueur" id="nbJoueur" min="2" value="<?= $session->getNbJoueur() ?>" required>
         </div>
 
 

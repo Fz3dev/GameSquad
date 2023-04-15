@@ -35,7 +35,6 @@ use class\Utilisateur;
         $query->closeCursor();
         return $result;
     }
-
     //Fonction qui verifier si l'email est disponible
     function checkEmail($email){
         $pdo = getConnexion();
