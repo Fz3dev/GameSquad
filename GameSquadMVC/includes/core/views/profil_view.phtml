@@ -23,6 +23,9 @@ require_once 'includes/core/globals.php';
         <div class="profil">
             <div class="profilInfo">
 
+                <?php $avatar= getAvatarById($user->getIdAvatar());
+                      $avatarName= $avatar->getName() ;?>
+                <p>Avatar : <?= $avatarName?> </p>
                 <p>Nom :  <?= $user->getName(); ?></p>
                 <p>Prénom :  <?= $user->getFirstname(); ?></p>
                 <p>Email :   <?= $user->getEmail(); ?></p>

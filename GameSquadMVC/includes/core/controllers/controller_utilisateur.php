@@ -10,10 +10,12 @@ require_once 'includes/core/models/dao/daoJeu.php';
 require_once 'includes/core/models/class/Jeu.php';
 require_once 'includes/core/models/dao/daoPlateforme.php';
 require_once 'includes/core/models/class/Plateforme.php';
+require_once 'includes/core/models/dao/daoAvatars.php';
 
 $action = $_GET['action'] ?? 'view';
 switch ($action) {
     case 'view':{
+
         if (!isset($_SESSION['user'])) {
             header('Location: index.php?page=user&action=login');
         }else {
@@ -25,9 +27,9 @@ switch ($action) {
     }
     case 'add':
     {
-
+        $listeAvatars = getAllAvatars(); // on récupère la liste des avatars
         $unUtilisateur= new Utilisateur();
-        //on vérifie si le formulaire à ete envoyé
+        //on vérifie si le formulaire à été envoyé
         if (!empty($_POST)) {
             //on va créer un objet utilisateur
             $unUtilisateur = new Utilisateur(
@@ -36,7 +38,8 @@ switch ($action) {
                 $_POST['pseudo'],
                 $_POST['birthday'],
                 $_POST['email'],
-                1
+                1,
+                $_POST['avatar'] // on ajoute l'avatar choisi par l'utilisateur
             );
             // le formulaire à été envoyé
 
@@ -91,13 +94,11 @@ switch ($action) {
                 // LE FORMULAIRE N'EST PAS COMPLET
 
             }
-
-
-
         }
         require_once 'includes/core/views/form_inscription.phtml';
         break;
     }
+
     case 'login':
     {
         require_once 'includes/core/views/form_connexion.phtml';
@@ -166,6 +167,9 @@ switch ($action) {
         }
     case 'profilUpdate':
         require_once 'includes/core/models/dao/daoUtilisateur.php';
+        require_once 'includes/core/models/dao/daoAvatars.php';
+        $listeAvatars = getAllAvatars(); // on récupère la liste des avatars
+
 
         {
             if (!isset($_SESSION['user'])) {
@@ -189,6 +193,7 @@ switch ($action) {
                         $user->setFirstname($_POST['firstname']);
                         $user->setPseudo($_POST['pseudo']);
                         $user->setEmail($_POST['email']);
+                        $user->setIdAvatar($_POST['avatar']);
 
                         $_SESSION['user'] = $user;
                         //on met a jours avec la fonction updateUtilisateur
@@ -201,7 +206,6 @@ switch ($action) {
 
 
                     }
-
 
 
                 }
@@ -217,7 +221,7 @@ switch ($action) {
                     header('Location: index.php?page=user&action=login');
                 } else {
                     $user = $_SESSION['user'];
-                    //on va supprimer l'utilisateur
+                    //on va supprimer l'utilisateur@
                     deleteUtilisateur($user->getId());
                     //on va détruire la session
                     session_destroy();

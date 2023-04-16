@@ -37,7 +37,15 @@ nav ul {
     color: #f7f7f7;
     font-size: 3rem;
     text-align: center;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border: solid 2px #818181;
     }
+
 .pseudo {
     font-family: sofiaM;
     color: #f7f7f7;

@@ -28,14 +28,19 @@ require 'includes/partials/page_head.phtml';
 
 
     foreach ($lesSessions as $uneSession) {
-        var_dump($uneSession->getId());
+
         $unJeu = getJeuById($uneSession->getIdjeu());
         $unePlateforme = getPlateformeById($uneSession->getIdplateforme());
+        $unUtilisateur = getUtilisateurById($uneSession->getHote()->getId());
+        $idAvatar = $unUtilisateur->getIdAvatar();
+        $unAvatar = getAvatarById($idAvatar);
+        $pathAvatar = $unAvatar->getPath();
+
 
         echo '<div class="cardSession">';
         echo '<div class="containerSession left">';
-        echo '<div class="avatarJoueur">';
-        echo '<i class="fa-solid fa-circle-user"></i>';
+        echo '<div class="user">';
+        echo '<img src=' . $pathAvatar . '  </div>';
         echo '</div>';
         echo '<div class="pseudoJoueur">';
         echo '<p>' . $uneSession->getHote()->getPseudo() . '</p>';
@@ -60,7 +65,7 @@ require 'includes/partials/page_head.phtml';
         echo '<p> 1/ ' . $uneSession->getNbJoueur() . '</p>';
         echo '<ul>';
     echo '<li class="btn btn-primary"><a href="index.php?page=session&action=update&id=' .  $uneSession->getId() . '">Modifier</a></li>';
-        echo '<li class="btn btn-primary"><a href="index.php?page=session&action=delete">Supprimer</a></li>';
+        echo '<li class="btn btn-primary"><a href="index.php?page=session&action=delete&id=' .  $uneSession->getId() . '">Supprimer</a></li>';
         echo '</ul>';
         echo '</div>';
         echo '</div>';

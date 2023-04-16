@@ -7,6 +7,7 @@ require_once 'includes/core/models/class/Jeu.php';
 require_once 'includes/core/models/class/Plateforme.php';
 require_once 'includes/core/models/class/Session.php';
 require_once 'includes/core/models/bdd.php';
+require_once 'includes/core/models/dao/daoUtilisateur.php';
 
 // fonction qui permet de créer une session
 function createSession (Session $newSession):void
@@ -33,20 +34,18 @@ function getAllSessions(): array
     $conn = getConnexion();
 
     $SQLQuery = "SELECT s.ID, s.DateDebut, s.Titre, s.Description, s.NbJoueur, s.ID_Joueur, s.HeureDebut,
-       s.id_jeu, s.id_plateforme, u.Pseudo, j.Nom as NomJeux, p.Nom as NomPlateforme 
+   s.id_jeu, s.id_plateforme, u.Pseudo, j.Nom as NomJeux, p.Nom as NomPlateforme, a.path
 FROM Session s 
 INNER JOIN Utilisateur u ON s.ID_Joueur = u.ID
 INNER JOIN Jeux j ON s.id_jeu = j.ID
 INNER JOIN Plateforme p ON s.id_plateforme = p.ID
+LEFT JOIN avatars a ON u.id_avatar = a.id
 WHERE s.DateDebut >= CURDATE()
-ORDER BY s.DateDebut ASC";
-
-
+ORDER BY s.DateDebut ASC;
+";
     $SQLStmt = $conn->prepare($SQLQuery);
     $SQLStmt->execute();
-
     $listeSessions = array();
-
     while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)) {
         $hote = new \class\Hote($SQLRow['ID_Joueur'], $SQLRow['Pseudo']);
 

@@ -5,6 +5,7 @@ use class\Session;
 require_once 'includes/core/models/dao/daoSession.php';
 require_once 'includes/core/models/dao/daoJeu.php';
 require_once 'includes/core/models/dao/daoPlateforme.php';
+require_once 'includes/core/models/dao/daoAvatars.php';
 
 switch ($action) {
     case 'add':
@@ -99,15 +100,14 @@ switch ($action) {
         if (!isset($_SESSION['user'])) {
             header('Location: index.php?page=user&action=login');
         } else {
-            $user = $_SESSION['user'];
-            $id = $user->getId();
-            $lesSessions = getSessionsByUser($id);
-            foreach ($lesSessions as $uneSession)
-            $idSession = $uneSession->getId();
-            deleteSession($idSession);
+            if (isset($_GET['id'])) {
+                $idSession = $_GET['id'];
+                deleteSession($idSession);
+            }
             header("Location: index.php?page=user&action=squad");
             exit;
         }
         break;
     }
+
 }

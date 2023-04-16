@@ -19,6 +19,18 @@ require_once 'includes/core/globals.php';
 
         <form class="formContact" action="" method="POST">
             <h3>MODIFIER MON PROFIL </h3>
+            <div class="avatar">
+                <label for="avatar">Avatar</label>
+                <select name="avatar">
+                    <?php foreach ($listeAvatars as $avatar) : ?>
+                        <option value="<?php echo $avatar->getId(); ?>" <?= ($avatar->getId() == $user->getIdAvatar()) ? 'selected' : '' ?>>
+                            <?php echo $avatar->getName(); ?>
+
+                        </option>
+                    <?php endforeach; ?>
+
+                </select>
+            </div>
 
             <div class="nom">
                 <label for="name">Nom</label>

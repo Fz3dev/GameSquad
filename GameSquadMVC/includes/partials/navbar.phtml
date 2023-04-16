@@ -1,3 +1,4 @@
+
 <nav>
     <div class="logoNav">
         <a href="index.php?page=user"><img src="./public/medias/img/logoDW.png" alt="logo GAMESQUAD"></a>
@@ -5,11 +6,21 @@
     <div class="menu">
         <ul>
             <li><a href="index.php?page=session&action=add">CRÉER UNE SQUAD</a></li>
-            <li><a href="index.php?page=session&action=search">TROUVER UNE SQUAD</a></li>
+            <li><a href="index.php?page=user">TROUVER UNE SQUAD</a></li>
         </ul>
     </div>
     <div class="burger">
-        <div class="user"><i class="fa-solid fa-circle-user"></i></div>
+        <div class="user">
+
+            <?php
+            $unAvatar= getAvatarById($_SESSION['user']->getIdavatar());
+            ?>
+            <img class="pixProfil" src="<?php echo $unAvatar->getPath(); ?>" alt="avatar">
+
+
+        </div>
+
+
         <div class="pseudo">
 
             <?php

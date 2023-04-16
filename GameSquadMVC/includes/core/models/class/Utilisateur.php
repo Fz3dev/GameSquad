@@ -12,9 +12,10 @@ class Utilisateur
     private string $email;
     private string $password;
     private int $role;
+    private int $idAvatar;
 
-    public function __construct(string $name = '', string $firstname ='',string $pseudo ='', $birthday ='',
-                                string $email ='', int $role = 1)
+    public function __construct(string $name = '', string $firstname = '', string $pseudo = '', $birthday = '',
+                                string $email = '', int $role = 1, int $idAvatar = 0 )
     {
         $this->name = $name;
         $this->firstname = $firstname;
@@ -23,9 +24,10 @@ class Utilisateur
         $this->email = $email;
         $this->password = '';
         $this->role = $role;
+        $this->idAvatar = $idAvatar;
     }
 
-    public function getId():int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -35,7 +37,7 @@ class Utilisateur
         $this->id = $id;
     }
 
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -45,7 +47,7 @@ class Utilisateur
         $this->name = $name;
     }
 
-    public function getFirstname():string
+    public function getFirstname(): string
     {
         return $this->firstname;
     }
@@ -55,7 +57,7 @@ class Utilisateur
         $this->firstname = $firstname;
     }
 
-    public function getPseudo():string
+    public function getPseudo(): string
     {
         return $this->pseudo;
     }
@@ -65,7 +67,7 @@ class Utilisateur
         $this->pseudo = $pseudo;
     }
 
-    public function getBirthday():string
+    public function getBirthday()
     {
         return $this->birthday;
     }
@@ -75,7 +77,7 @@ class Utilisateur
         $this->birthday = $birthday;
     }
 
-    public function getEmail():string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -85,7 +87,7 @@ class Utilisateur
         $this->email = $email;
     }
 
-    public function getPassword():string
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -95,7 +97,7 @@ class Utilisateur
         $this->password = $password;
     }
 
-    public function getRole():int
+    public function getRole(): int
     {
         return $this->role;
     }
@@ -105,4 +107,16 @@ class Utilisateur
         $this->role = $role;
     }
 
+    public function getIdAvatar(): int
+    {
+        return $this->idAvatar;
+    }
+
+    public function setIdAvatar(int $idAvatar): void
+    {
+        $this->idAvatar = $idAvatar;
+    }
+
 }
+
+
